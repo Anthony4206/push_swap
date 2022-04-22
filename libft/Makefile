@@ -6,7 +6,7 @@
 #    By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/29 07:00:06 by alevasse          #+#    #+#              #
-#    Updated: 2022/04/21 10:12:24 by alevasse         ###   ########.fr        #
+#    Updated: 2022/04/22 08:06:03 by alevasse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRCS 			= ${foreach dir, ${SRCS_DIRS}, ${wildcard ${dir}/*.c}}
 OBJS_DIRS 		= ${foreach dir, ${SUB_DIRS}, ${addprefix ${DIR_OBJS}/, ${dir}}}
 OBJS 			= ${subst ${DIR_SRCS}, ${DIR_OBJS}, ${SRCS:.c=.o}}
 
-INCLUDES 		= -I./includes
+INCLUDES 		= -I./../includes
 
 CC 				= gcc
 CFLAGS 			= -Wall -Wextra -Werror
@@ -35,18 +35,15 @@ GREEN			:= "\033[0;32m"
 CYAN			:= "\033[0;36m"
 RESET			:= "\033[0m"
 
-all: 			${NAME}
+${DIR_OBJS}/%.o:	${DIR_SRCS}/%.c
+				@mkdir -p ${DIR_OBJS} ${OBJS_DIRS}
+				@${CC} ${CFLAGS} ${INCLUDES} -c $< -o ${@:.c=.o}
 
 ${NAME}: 		${OBJS}
 				@${AR} ${NAME} ${OBJS}
 				@echo ${GREEN}"Compiled '${NAME}' with success" ${RESET}
 
-bonus:
-				@make ADD_BONUS=1 all
-
-${DIR_OBJS}/%.o:	${DIR_SRCS}/%.c
-				@mkdir -p ${DIR_OBJS} ${OBJS_DIRS}
-				@${CC} ${CFLAGS} ${INCLUDES} -c $< -o ${@:.c=.o}
+all: 			${NAME}
 
 clean:
 				@${RM} ${OBJS}
@@ -54,7 +51,7 @@ clean:
 				@${RM} ${REC} ${DIR_OBJS}
 				@echo ${CYAN}"Cleaned '${DIR_OBJS}' 'libft' with success"${RESET}
 
-fclean: 		clean
+fclean:
 				@${RM} ${NAME}
 				@echo ${CYAN}"Removed '${NAME}' with success"${RESET}
 

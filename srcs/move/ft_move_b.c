@@ -1,26 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_move_b.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/21 13:38:02 by alevasse          #+#    #+#             */
-/*   Updated: 2022/04/22 13:55:01 by alevasse         ###   ########.fr       */
+/*   Created: 2022/04/22 11:36:36 by alevasse          #+#    #+#             */
+/*   Updated: 2022/04/22 15:54:41 by alevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-
-# include "libft.h"
-
-typedef struct s_stack {
-	t_list	*a;
-	t_list	*b;
-}			t_stack;
-
-t_list	*ft_parsing(int argc, char **argv);
-void	ft_swap_a(t_list **a);
-
-#endif

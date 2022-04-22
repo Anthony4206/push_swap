@@ -1,6 +1,13 @@
 #include "push_swap.h"
 
-t_list	ft_parsing(int argc, char **argv)
+static int	ft_is_error(t_list **lst)
+{
+	ft_lstclear(&(*lst));
+	ft_putendl_fd("Error", STDERR_FILENO);
+	exit(EXIT_FAILURE);
+}
+
+t_list	*ft_parsing(int argc, char **argv)
 {
 	t_list	*ret;
 	int		i;
@@ -15,8 +22,16 @@ t_list	ft_parsing(int argc, char **argv)
 	}
 	while (argv[i])
 	{
-		while ()
-		ft_lstadd_back(&ret, ft_lstnew(ft_atoi(argv[i])));
+		j = 0;
+		if (argv[i][0] == '+' || argv[i][0] == '-')
+				j++;
+		while (argv[i][j])
+		{
+			if (!ft_isdigit(argv[i][j]) || !argv[i][j])
+				ft_is_error(&ret);
+			j++;
+		}
+		ft_lstadd_back(&ret, ft_lstnew(ft_atoi(argv[i++])));
 	}
-	return (*ret);
+	return (ret);
 }
