@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+         #
+#    By: Anthony <Anthony@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/22 08:07:04 by alevasse          #+#    #+#              #
-#    Updated: 2022/04/22 09:17:07 by alevasse         ###   ########.fr        #
+#    Updated: 2022/04/23 15:59:00 by Anthony          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME 				= push_swap
 DIR_SRCS 			= srcs
 DIR_SRCS_B			= bonus
 DIR_OBJS 			= objs
-SUB_DIRS 			= push_swap
+SUB_DIRS 			= push_swap move
 SUB_DIRS_B			=
 
 SRCS_DIRS 			= ${foreach dir, ${SUB_DIRS}, ${addprefix ${DIR_SRCS}/, ${dir}}}
