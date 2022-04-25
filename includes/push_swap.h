@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Anthony <Anthony@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 13:38:02 by alevasse          #+#    #+#             */
-/*   Updated: 2022/04/23 15:56:22 by Anthony          ###   ########.fr       */
+/*   Updated: 2022/04/25 11:16:25 by alevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,8 @@ void	ft_reverse_rotate_b(t_list **b);
 void	ft_swap_ab(t_list **a, t_list **b);
 void	ft_rotate_ab(t_list **a, t_list **b);
 void	ft_reverse_rotate_ab(t_list **a, t_list **b);
+
+void	ft_add_index(t_list **a);
+void	ft_add_place(t_list **a);
 
 #endif

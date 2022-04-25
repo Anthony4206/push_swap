@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_move_ab.c                                       :+:      :+:    :+:   */
+/*   ft_add_index.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/22 11:36:24 by alevasse          #+#    #+#             */
-/*   Updated: 2022/04/25 14:59:59 by alevasse         ###   ########.fr       */
+/*   Created: 2022/04/25 07:06:21 by alevasse          #+#    #+#             */
+/*   Updated: 2022/04/25 07:26:11 by alevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_swap_ab(t_list **a, t_list **b)
+void	ft_add_index(t_list **a)
 {
-	ft_swap_a(&(*a));
-	ft_swap_b(&(*b));
-}
+	t_list	*start;
+	int		i;
 
-void	ft_rotate_ab(t_list **a, t_list **b)
-{
-	ft_rotate_a(&(*a));
-	ft_rotate_b(&(*b));
-}
-
-void	ft_reverse_rotate_ab(t_list **a, t_list **b)
-{
-	ft_reverse_rotate_a(&(*a));
-	ft_reverse_rotate_b(&(*b));
+	i = 0;
+	start = *a;
+	while (*a)
+	{
+		(*a)->index = i++;
+		(*a) = (*a)->next;
+	}
+	*a = start;
 }

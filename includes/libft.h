@@ -6,7 +6,7 @@
 /*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 15:33:40 by alevasse          #+#    #+#             */
-/*   Updated: 2022/04/22 13:53:49 by alevasse         ###   ########.fr       */
+/*   Updated: 2022/04/25 07:27:25 by alevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@
 
 typedef struct s_list
 {
-	int				nb;
+	int				value;
+	int				index;
+	int				place;
 	struct s_list	*next;
 }					t_list;
 

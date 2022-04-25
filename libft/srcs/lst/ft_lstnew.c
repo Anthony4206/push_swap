@@ -6,7 +6,7 @@
 /*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 11:15:17 by alevasse          #+#    #+#             */
-/*   Updated: 2022/04/22 08:09:35 by alevasse         ###   ########.fr       */
+/*   Updated: 2022/04/25 07:04:12 by alevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_list	*ft_lstnew(int nb)
 	new = (t_list *)malloc(sizeof(t_list));
 	if (!new)
 		return (NULL);
-	new->nb = nb;
+	new->value = nb;
 	new->next = NULL;
 	return (new);
 }

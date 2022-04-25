@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: Anthony <Anthony@student.42.fr>            +#+  +:+       +#+         #
+#    By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/22 08:07:04 by alevasse          #+#    #+#              #
-#    Updated: 2022/04/23 15:59:00 by Anthony          ###   ########.fr        #
+#    Updated: 2022/04/25 14:54:19 by alevasse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,6 +53,11 @@ ${NAME}: 		${OBJS}
 				@echo ${GREEN}"Successfully updated 'libft'" ${RESET}
 				@${CC} ${CFLAGS} ${INCLUDES} -o ${NAME} ${OBJS} libft/libft.a
 				@echo ${GREEN}"Compiled '${NAME}' with success" ${RESET}
+
+$(NAME)_debug: $(SRCS)
+				$(CC) $(CFLAGS) $(INCLUDES) -g -o $(NAME)_debug $(SRCS) libft/libft.a
+
+debug: $(NAME)_debug
 
 bonus:
 				@make ADD_BONUS=1 all
