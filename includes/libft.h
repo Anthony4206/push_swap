@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Anthony <Anthony@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 15:33:40 by alevasse          #+#    #+#             */
-/*   Updated: 2022/04/25 17:37:00 by Anthony          ###   ########.fr       */
+/*   Updated: 2022/04/26 14:47:46 by alevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_list
 	int				value;
 	int				index;
 	int				place;
+	int				keep;
 	struct s_list	*next;
 }					t_list;
 

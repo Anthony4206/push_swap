@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_move_a.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Anthony <Anthony@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 11:36:32 by alevasse          #+#    #+#             */
-/*   Updated: 2022/04/23 16:11:25 by Anthony          ###   ########.fr       */
+/*   Updated: 2022/04/26 11:27:23 by alevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,15 @@ void	ft_push_a(t_list **a, t_list **b)
 {
 	t_list	*tmp;
 
-	if (!*a)
+	if (!*b)
 		return ;
-	tmp = *a;
-	*a = tmp->next;
-	if (*b)
-		tmp->next = *b;
+	tmp = *b;
+	*b = tmp->next;
+	if (*a)
+		tmp->next = *a;
 	else
 		tmp->next = NULL;
-	*b = tmp;
+	*a = tmp;
 }
 
 void	ft_rotate_a(t_list **a)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_add_place.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Anthony <Anthony@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 07:28:24 by alevasse          #+#    #+#             */
-/*   Updated: 2022/04/25 18:31:12 by Anthony          ###   ########.fr       */
+/*   Updated: 2022/04/26 06:40:14 by alevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ static int	ft_chr_min(t_list **a, int place)
 
 	start = *a;
 	min = (*a)->value;
-	ft_putnbr((*a)->value);
-	ft_putchar('\n');
 	while (*a)
 	{
 		if ((*a)->value < min)

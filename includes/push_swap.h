@@ -6,7 +6,7 @@
 /*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 13:38:02 by alevasse          #+#    #+#             */
-/*   Updated: 2022/04/25 11:16:25 by alevasse         ###   ########.fr       */
+/*   Updated: 2022/04/26 09:17:55 by alevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ void	ft_reverse_rotate_ab(t_list **a, t_list **b);
 
 void	ft_add_index(t_list **a);
 void	ft_add_place(t_list **a);
+void	ft_add_keep(t_list **a);
 
 #endif

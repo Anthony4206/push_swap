@@ -6,7 +6,7 @@
 #    By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/22 08:07:04 by alevasse          #+#    #+#              #
-#    Updated: 2022/04/25 14:54:19 by alevasse         ###   ########.fr        #
+#    Updated: 2022/04/26 06:23:55 by alevasse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,7 @@ ${NAME}: 		${OBJS}
 				@${CC} ${CFLAGS} ${INCLUDES} -o ${NAME} ${OBJS} libft/libft.a
 				@echo ${GREEN}"Compiled '${NAME}' with success" ${RESET}
 
-$(NAME)_debug: $(SRCS)
+$(NAME)_debug:	$(SRCS)
 				$(CC) $(CFLAGS) $(INCLUDES) -g -o $(NAME)_debug $(SRCS) libft/libft.a
 
 debug: $(NAME)_debug
