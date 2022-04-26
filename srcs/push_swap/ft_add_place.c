@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_add_place.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Anthony <Anthony@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 07:28:24 by alevasse          #+#    #+#             */
-/*   Updated: 2022/04/25 15:48:18 by alevasse         ###   ########.fr       */
+/*   Updated: 2022/04/25 18:31:12 by Anthony          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,20 @@ static int	ft_chr_min(t_list **a, int place)
 
 	start = *a;
 	min = (*a)->value;
+	ft_putnbr((*a)->value);
+	ft_putchar('\n');
 	while (*a)
 	{
 		if ((*a)->value < min)
-		{
-			ft_putendl("Coucou");
 			min = (*a)->value;
-			(*a)->place = place;
-		}
 		*a = (*a)->next;
+	}
+	*a = start;
+	while (*a)
+	{
+			if ((*a)->value == min)
+				(*a)->place = place;
+			*a = (*a)->next;
 	}
 	*a = start;
 	return (min);
@@ -45,20 +50,19 @@ static int	ft_chr_next_min(t_list **a, int min, int place)
 	while (*a)
 	{
 		if ((*a)->value < new_min && (*a)->value > min)
-		{
 			new_min = (*a)->value;
+		*a = (*a)->next;
+	}
+	*a = start;
+	while (*a)
+	{
+		if ((*a)->value == new_min)
 			(*a)->place = place;
-		}
 		*a = (*a)->next;
 	}
 	*a = start;
 	return (new_min);
 }
-
-/*void	ft_put_place(t_list **a)
-{
-
-}*/
 
 void	ft_add_place(t_list **a)
 {
@@ -66,7 +70,7 @@ void	ft_add_place(t_list **a)
 	int	min;
 	int	len;
 
-	place = 1;
+	place = 0;
 	len = ft_lstsize(*a);
 	min = ft_chr_min(&(*a), place);
 	place++;
