@@ -6,7 +6,7 @@
 /*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 13:33:55 by alevasse          #+#    #+#             */
-/*   Updated: 2022/04/26 11:28:33 by alevasse         ###   ########.fr       */
+/*   Updated: 2022/04/28 15:27:15 by alevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,67 +15,84 @@
 int	main(int argc, char **argv)
 {
 	t_stack	stack;
+	t_info	info;
+	t_move	move;
 	t_list	*tmp;
-	int		len;
+	t_list	*tmp2;
 	int		i;
 
 	if (argc < 2)
 		return (0);
 	stack.a = ft_parsing(argc, argv);
 	stack.b = NULL;
-	tmp = stack.a;
 	i = 0;
-	len = ft_lstsize(stack.a);
-	ft_add_index(&stack.a);
+	info.size_a = ft_lstsize(stack.a);
 	ft_add_place(&stack.a);
-	ft_add_keep(&stack.a);
+	ft_a_to_b(&stack, &info);
+	tmp = stack.a;
+	tmp2 = stack.b;
 	while (stack.a)
 	{
-		ft_putnbr(stack.a->value);
+		ft_printf("%11d", stack.a->value);
 		ft_putstr(" | ");
-		ft_putnbr(stack.a->place);
-		ft_putstr(" | ");
-		ft_putnbr(stack.a->keep);
+		ft_printf("%-11d\n", stack.a->place);
 		ft_putchar('\n');
 		stack.a = stack.a->next;
 	}
-//	stack.a = tmp;
-//	ft_putchar('\n');
-//	ft_putchar('\n');
-/*	while (i++ < len)
-		ft_push_a(&stack.a, &stack.b);
+	ft_putendl("___________________________");
 	while (stack.b)
 	{
-		ft_putnbr(stack.b->value);
+		ft_printf("%11d", stack.b->value);
 		ft_putstr(" | ");
-		ft_putnbr(stack.b->place);
+		ft_printf("%-11d\n", stack.b->place);
+		ft_putchar('\n');
+		stack.b = stack.b->next;
+	}
+	stack.a = tmp;
+	stack.b = tmp2;
+	ft_a_to_b_2(&stack, &info, &move);
+	tmp = stack.a;
+	tmp2 = stack.b;
+	ft_putendl("___________________________");
+	ft_putendl("___________________________");
+	while (stack.a)
+	{
+		ft_printf("%11d", stack.a->value);
 		ft_putstr(" | ");
-		ft_putnbr(stack.b->keep);
+		ft_printf("%-11d\n", stack.a->place);
+		ft_putchar('\n');
+		stack.a = stack.a->next;
+	}
+	ft_putendl("___________________________");
+	while (stack.b)
+	{
+		ft_printf("%11d", stack.b->value);
+		ft_putstr(" | ");
+		ft_printf("%-11d\n", stack.b->place);
+		ft_putchar('\n');
+		stack.b = stack.b->next;
+	}	
+	stack.a = tmp;
+	stack.b = tmp2;
+	/*ft_b_to_a_2(&stack, &info, &move);
+	ft_putendl("___________________________");
+	ft_putendl("___________________________");
+	while (stack.a)
+	{
+		ft_printf("%11d", stack.a->value);
+		ft_putstr(" | ");
+		ft_printf("%-11d\n", stack.a->place);
+		ft_putchar('\n');
+		stack.a = stack.a->next;
+	}
+	ft_putendl("___________________________");
+	while (stack.b)
+	{
+		ft_printf("%11d", stack.b->value);
+		ft_putstr(" | ");
+		ft_printf("%-11d\n", stack.b->place);
 		ft_putchar('\n');
 		stack.b = stack.b->next;
 	}*/
-/*	ft_putendl("Pile a :");
-	ft_putnbr(stack.a->place);
-	ft_putchar('\n');
-	ft_putnbr(stack.a->next->place);
-	ft_putchar('\n');
-	ft_putnbr(stack.a->next->next->place);
-	ft_putchar('\n');
-	ft_rotate_a(&stack.a);
-	ft_putendl("Pile a :");
-	ft_putnbr(stack.a->place);
-	ft_putchar('\n');
-	ft_putnbr(stack.a->next->place);
-	ft_putchar('\n');
-	ft_putnbr(stack.a->next->next->place);
-	ft_putchar('\n');
-	ft_reverse_rotate_a(&stack.a);
-	ft_putendl("Pile a :");
-	ft_putnbr(stack.a->place);
-	ft_putchar('\n');
-	ft_putnbr(stack.a->next->place);
-	ft_putchar('\n');
-	ft_putnbr(stack.a->next->next->place);
-	ft_putchar('\n');*/
 	return (0);
 }
