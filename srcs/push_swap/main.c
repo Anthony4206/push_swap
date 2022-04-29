@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Anthony <Anthony@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 13:33:55 by alevasse          #+#    #+#             */
-/*   Updated: 2022/04/28 15:27:15 by alevasse         ###   ########.fr       */
+/*   Updated: 2022/04/28 19:22:07 by Anthony          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,29 @@ int	main(int argc, char **argv)
 	i = 0;
 	info.size_a = ft_lstsize(stack.a);
 	ft_add_place(&stack.a);
+	tmp = stack.a;
+	tmp2 = stack.b;
+	while (stack.a)
+	{
+		ft_printf("%11d", stack.a->chunck);
+		ft_putstr(" | ");
+		ft_printf("%-11d\n", stack.a->place);
+		ft_putchar('\n');
+		stack.a = stack.a->next;
+	}
+	ft_putendl("___________________________");
+	while (stack.b)
+	{
+		ft_printf("%11d", stack.b->value);
+		ft_putstr(" | ");
+		ft_printf("%-11d\n", stack.b->place);
+		ft_putchar('\n');
+		stack.b = stack.b->next;
+	}
+	stack.a = tmp;
+	stack.b = tmp2;
+	ft_putendl("___________________________");
+	ft_putendl("___________________________");
 	ft_a_to_b(&stack, &info);
 	tmp = stack.a;
 	tmp2 = stack.b;
