@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Anthony <Anthony@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 13:38:02 by alevasse          #+#    #+#             */
-/*   Updated: 2022/04/28 19:20:56 by Anthony          ###   ########.fr       */
+/*   Updated: 2022/04/29 10:54:39 by alevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,7 @@ t_list	ft_select_pvt(t_list **lst, int size, int third);
 void	ft_a_to_b(t_stack *stack, t_info *info);
 void	ft_a_to_b_2(t_stack *stack, t_info *info, t_move *move);
 void	ft_b_to_a_2(t_stack *stack, t_info *info, t_move *move);
+int		ft_chunck_size(t_list *lst, int chunck);
+
 
 #endif

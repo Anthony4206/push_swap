@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Anthony <Anthony@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 13:33:55 by alevasse          #+#    #+#             */
-/*   Updated: 2022/04/28 19:22:07 by Anthony          ###   ########.fr       */
+/*   Updated: 2022/04/29 12:29:41 by alevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(int argc, char **argv)
 	tmp2 = stack.b;
 	while (stack.a)
 	{
-		ft_printf("%11d", stack.a->chunck);
+		ft_printf("%11d", stack.a->value);
 		ft_putstr(" | ");
 		ft_printf("%-11d\n", stack.a->place);
 		ft_putchar('\n');

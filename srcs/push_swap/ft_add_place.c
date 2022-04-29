@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_add_place.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Anthony <Anthony@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 07:28:24 by alevasse          #+#    #+#             */
-/*   Updated: 2022/04/28 19:21:45 by Anthony          ###   ########.fr       */
+/*   Updated: 2022/04/29 07:34:18 by alevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	ft_add_chunck(t_list **a, int place, int len)
 {
 	if (place < (len / 3))
 		(*a)->chunck = 1;
-	else if (place > ((len / 3) * 2))
+	else if (place >= ((len / 3) * 2))
 		(*a)->chunck = 3;
 	else
 		(*a)->chunck = 2;
@@ -38,18 +38,18 @@ static int	ft_chr_min(t_list **a, int place, int len)
 	*a = start;
 	while (*a)
 	{
-			if ((*a)->value == min)
-			{
-				(*a)->place = place;
-				ft_add_chunck(&(*a), place, len);
-			}
-			*a = (*a)->next;
+		if ((*a)->value == min)
+		{
+			(*a)->place = place;
+			ft_add_chunck(&(*a), place, len);
+		}
+		*a = (*a)->next;
 	}
 	*a = start;
 	return (min);
 }
 
-static int	ft_chr_next_min(t_list **a, int min, int place)
+static int	ft_chr_next_min(t_list **a, int min, int place, int len)
 {
 	t_list	*start;
 	int		new_min;
@@ -68,7 +68,10 @@ static int	ft_chr_next_min(t_list **a, int min, int place)
 	while (*a)
 	{
 		if ((*a)->value == new_min)
+		{
 			(*a)->place = place;
+			ft_add_chunck(&(*a), place, len);
+		}
 		*a = (*a)->next;
 	}
 	*a = start;
@@ -87,7 +90,7 @@ void	ft_add_place(t_list **a)
 	place++;
 	while (place < len)
 	{
-		min = ft_chr_next_min(&(*a), min, place);
+		min = ft_chr_next_min(&(*a), min, place, len);
 		place++;
 	}
 }

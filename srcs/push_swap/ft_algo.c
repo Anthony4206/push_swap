@@ -6,7 +6,7 @@
 /*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 07:21:31 by alevasse          #+#    #+#             */
-/*   Updated: 2022/04/28 15:31:08 by alevasse         ###   ########.fr       */
+/*   Updated: 2022/04/29 12:28:08 by alevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ void	ft_a_to_b_2(t_stack *stack, t_info *info, t_move *move)
 {
 	int		len;
 
+	ft_add_place(&stack->a);
 	len = ft_lstsize(stack->a);
 	ft_putnbr(len);
 	ft_putchar('\n');
@@ -120,7 +121,7 @@ void	ft_a_to_b_2(t_stack *stack, t_info *info, t_move *move)
 		{
 			ft_push_b(&(stack->b), &(stack->a));
 			move->pb_count++;
-			if (info->top_a.place < info->small_pvt.place)
+			if (info->top_a.place >= info->small_pvt.place)
 			{
 				ft_rotate_b(&(stack->b));
 				move->rb_count++;
@@ -160,3 +161,11 @@ void	ft_b_to_a_2(t_stack *stack, t_info *info, t_move *move)
 	while (move->ra_count-- && move->rb_count--)
 		ft_reverse_rotate_ab(&(stack->a), &(stack->b));
 }
+
+/*void	ft_a_to_b_3(t_stack *stack, t_info *info, t_move *move)
+{
+	int	len;
+
+	len = 
+	if ()
+}*/
