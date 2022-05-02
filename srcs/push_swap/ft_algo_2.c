@@ -28,3 +28,12 @@ void	ft_mini_swap(t_stack *stack)
 		ft_rotate_a(&(stack->a));
 	}
 }
+
+void	ft_a_to_b(t_stack *stack, t_chunck chunck, t_info *info)
+{
+	int	i;
+	int 
+
+	info->size_a = ft_lstsize(stack->a);
+
+}
