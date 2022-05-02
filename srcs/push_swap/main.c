@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Anthony <Anthony@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 13:33:55 by alevasse          #+#    #+#             */
-/*   Updated: 2022/04/29 12:29:41 by alevasse         ###   ########.fr       */
+/*   Updated: 2022/05/01 18:30:41 by Anthony          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	main(int argc, char **argv)
 	}
 	stack.a = tmp;
 	stack.b = tmp2;
-	ft_a_to_b_2(&stack, &info, &move);
+	ft_b_to_a_2(&stack, &info, &move);
 	tmp = stack.a;
 	tmp2 = stack.b;
 	ft_putendl("___________________________");

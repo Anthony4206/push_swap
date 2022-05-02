@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_algo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Anthony <Anthony@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 07:21:31 by alevasse          #+#    #+#             */
-/*   Updated: 2022/04/29 12:28:08 by alevasse         ###   ########.fr       */
+/*   Updated: 2022/05/01 16:54:40 by Anthony          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,14 +101,8 @@ void	ft_a_to_b_2(t_stack *stack, t_info *info, t_move *move)
 
 	ft_add_place(&stack->a);
 	len = ft_lstsize(stack->a);
-	ft_putnbr(len);
-	ft_putchar('\n');
 	info->small_pvt = ft_select_pvt(&(stack->a), len, 1);
-	ft_putnbr(info->small_pvt.place);
-	ft_putchar('\n');
 	info->tall_pvt = ft_select_pvt(&(stack->a), len, 2);
-	ft_putnbr(info->tall_pvt.place);
-	ft_putchar('\n');
 	while (len--)
 	{	
 		info->top_a = *stack->a;
