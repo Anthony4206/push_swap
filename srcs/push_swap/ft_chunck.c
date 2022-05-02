@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_chunck.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/02 07:50:51 by alevasse          #+#    #+#             */
+/*   Updated: 2022/05/02 09:25:29 by alevasse         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 t_chunck	ft_chunck(t_list *a)
@@ -14,7 +26,7 @@ t_chunck	ft_chunck(t_list *a)
 	{
 		if (a->value < a->next->value)
 		{
-			tmp.end - a->next->value;
+			tmp.end = a->next->index;
 			if (wdt < (tmp.end - tmp.start))
 			{
 				wdt = tmp.end - tmp.start;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_algo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Anthony <Anthony@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 07:21:31 by alevasse          #+#    #+#             */
-/*   Updated: 2022/05/01 16:54:40 by Anthony          ###   ########.fr       */
+/*   Updated: 2022/05/02 14:48:27 by alevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	ft_a_to_b_quicksort_plus(t_stack *stack, t_info *info)
 		ft_reverse_rotate_a(&(stack->a));
 }*/
 
-void	ft_a_to_b(t_stack *stack, t_info *info)
+/*void	ft_a_to_b(t_stack *stack, t_info *info)
 {
 	int		len;
 
@@ -93,7 +93,7 @@ void	ft_a_to_b(t_stack *stack, t_info *info)
 				ft_rotate_b(&(stack->b));
 		}
 	}
-}
+}*/
 
 void	ft_a_to_b_2(t_stack *stack, t_info *info, t_move *move)
 {
@@ -108,7 +108,7 @@ void	ft_a_to_b_2(t_stack *stack, t_info *info, t_move *move)
 		info->top_a = *stack->a;
 		if (info->top_a.place >= info->tall_pvt.place)
 		{
-			ft_rotate_a(&(stack->a));
+			ft_rotate_a(&(stack->a), 1);
 			move->ra_count++;
 		}
 		else
@@ -117,7 +117,7 @@ void	ft_a_to_b_2(t_stack *stack, t_info *info, t_move *move)
 			move->pb_count++;
 			if (info->top_a.place >= info->small_pvt.place)
 			{
-				ft_rotate_b(&(stack->b));
+				ft_rotate_b(&(stack->b), 1);
 				move->rb_count++;
 			}
 		}
@@ -138,7 +138,7 @@ void	ft_b_to_a_2(t_stack *stack, t_info *info, t_move *move)
 		info->top_b = *stack->b;
 		if (info->top_b.place >= info->tall_pvt.place)
 		{
-			ft_rotate_b(&(stack->b));
+			ft_rotate_b(&(stack->b), 1);
 			move->ra_count++;
 		}
 		else
@@ -147,7 +147,7 @@ void	ft_b_to_a_2(t_stack *stack, t_info *info, t_move *move)
 			move->pb_count++;
 			if (info->top_b.place < info->small_pvt.place)
 			{
-				ft_rotate_a(&(stack->a));
+				ft_rotate_a(&(stack->a), 1);
 				move->rb_count++;
 			}
 		}
@@ -162,4 +162,5 @@ void	ft_b_to_a_2(t_stack *stack, t_info *info, t_move *move)
 
 	len = 
 	if ()
+		
 }*/

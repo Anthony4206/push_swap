@@ -6,13 +6,13 @@
 /*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 11:36:32 by alevasse          #+#    #+#             */
-/*   Updated: 2022/04/26 11:27:23 by alevasse         ###   ########.fr       */
+/*   Updated: 2022/05/02 14:44:36 by alevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_swap_a(t_list **a)
+void	ft_swap_a(t_list **a, int print)
 {
 	t_list	*tmp;
 
@@ -22,7 +22,8 @@ void	ft_swap_a(t_list **a)
 	(*a)->next = tmp->next;
 	tmp->next = *a;
 	*a = tmp;
-}
+	if (print)
+		ft_printf("sa\n");}
 
 void	ft_push_a(t_list **a, t_list **b)
 {
@@ -37,9 +38,10 @@ void	ft_push_a(t_list **a, t_list **b)
 	else
 		tmp->next = NULL;
 	*a = tmp;
+	ft_printf("pa\n");
 }
 
-void	ft_rotate_a(t_list **a)
+void	ft_rotate_a(t_list **a, int print)
 {
 	t_list	*tmp;
 	t_list	*chr;
@@ -53,9 +55,10 @@ void	ft_rotate_a(t_list **a)
 		chr = chr->next;
 	chr->next = tmp;
 	tmp->next = NULL;
-}
+	if (print)
+		ft_printf("ra\n");}
 
-void	ft_reverse_rotate_a(t_list **a)
+void	ft_reverse_rotate_a(t_list **a, int print)
 {
 	t_list	*tmp;
 	t_list	*chr;
@@ -71,4 +74,6 @@ void	ft_reverse_rotate_a(t_list **a)
 	chr->next = *a;
 	*a = chr;
 	tmp->next = NULL;
+	if (print)
+		ft_printf("rra\n");
 }
