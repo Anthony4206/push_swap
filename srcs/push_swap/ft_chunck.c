@@ -6,7 +6,7 @@
 /*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 07:50:51 by alevasse          #+#    #+#             */
-/*   Updated: 2022/05/02 09:25:29 by alevasse         ###   ########.fr       */
+/*   Updated: 2022/05/03 06:16:05 by alevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,6 @@ t_chunck	ft_chunck(t_list *a)
 			tmp.start = a->next->index;
 		a = a->next;
 	}
-	ret.len = ret.end - ret.start;
+	ret.len = ret.end - ret.start + 1;
 	return (ret);
 }

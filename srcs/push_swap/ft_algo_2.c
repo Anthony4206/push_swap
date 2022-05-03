@@ -6,7 +6,7 @@
 /*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 14:49:44 by alevasse          #+#    #+#             */
-/*   Updated: 2022/05/02 15:42:31 by alevasse         ###   ########.fr       */
+/*   Updated: 2022/05/03 06:24:39 by alevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	ft_pb_or_ra(t_stack *stack, t_chunck chunck, int len)
 		ft_rotate_a(&(stack->a), 1);
 }
 
-void	ft_a_to_b(t_stack *stack, t_chunck chunck, t_info *info)
+/*void	ft_a_to_b(t_stack *stack, t_chunck chunck, t_info *info)
 {
 	int	i;
 	int	len_chunck;
@@ -67,12 +67,9 @@ void	ft_a_to_b(t_stack *stack, t_chunck chunck, t_info *info)
 			i++;
 		}
 	}
-	ft_printf("%d\n", chunck.start);
-	ft_printf("%d\n", chunck.end);
-	ft_printf("%d\n", chunck.len);
-	while (ft_lstsize(stack->a) > chunck.len + 1 && ++i < 20)
+	while (ft_lstsize(stack->a) > chunck.len)
 		ft_pb_or_ra(stack, chunck, 0);
-}
+}*/
 
 /*void	ft_b_to_a(t_stack *stack)
 {
