@@ -6,7 +6,7 @@
 /*   By: Anthony <Anthony@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 13:38:02 by alevasse          #+#    #+#             */
-/*   Updated: 2022/05/04 21:55:56 by Anthony          ###   ########.fr       */
+/*   Updated: 2022/05/05 21:12:58 by Anthony          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@ typedef struct s_stack {
 typedef struct s_info {
 	int		size_a;
 	int		size_b;
-	t_list	top_a;
-	t_list	top_b;
+	t_list	last_a;
+	t_list	*top_a;
+	t_list	*top_b;
 	t_list	small_pvt;
 	t_list	tall_pvt;
 }			t_info;
@@ -68,5 +69,12 @@ void		ft_mini_swap(t_stack *stack);
 t_chunck	ft_chunck(t_list *a);
 void		ft_a_to_b_3(t_stack *stack, t_info *info, t_move *move, int size);
 void		ft_b_to_a_3(t_stack *stack, t_info *info, t_move *move, int size);
+void		ft_b_to_a(t_stack *stack, t_info *info);
+void		ft_move(t_stack *stack, t_move move);
+void		ft_move_ab(t_stack *stack, t_move *move);
+void		ft_define_move(t_stack *stack, t_info *info, t_move *move);
+void		ft_add_move(t_stack *stack, t_info *info, t_move *move);
+int			ft_check_condition(t_info *info);
+void		ft_add_info(t_stack *stack, t_info *info);
 
 #endif
