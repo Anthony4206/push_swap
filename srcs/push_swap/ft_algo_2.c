@@ -6,7 +6,7 @@
 /*   By: Anthony <Anthony@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 14:49:44 by alevasse          #+#    #+#             */
-/*   Updated: 2022/05/03 16:49:10 by Anthony          ###   ########.fr       */
+/*   Updated: 2022/05/05 06:39:58 by Anthony          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	ft_pb_or_ra(t_stack *stack, t_chunck chunck, int len)
 		ft_pb_or_ra(stack, chunck, 0);
 }*/
 
-/*void	ft_b_to_a(t_stack *stack)
+void	ft_b_to_a(t_stack *stack)
 {
 	if (((stack->a->place > stack->b->place
 				&& ((stack->a->place < ft_lstlast(stack->a)->place)

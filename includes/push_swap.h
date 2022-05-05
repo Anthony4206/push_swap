@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Anthony <Anthony@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 13:38:02 by alevasse          #+#    #+#             */
-/*   Updated: 2022/05/04 10:54:05 by alevasse         ###   ########.fr       */
+/*   Updated: 2022/05/04 21:55:56 by Anthony          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ typedef struct s_chunck {
 
 typedef struct s_move {
 	int	ra_count;
+	int	rra_count;
 	int	rb_count;
-	int	pa_count;
-	int	pb_count;
+	int	rrb_count;
 }		t_move;
 
 t_list		*ft_parsing(int argc, char **argv);

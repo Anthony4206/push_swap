@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_algo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Anthony <Anthony@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 07:21:31 by alevasse          #+#    #+#             */
-/*   Updated: 2022/05/04 12:41:16 by alevasse         ###   ########.fr       */
+/*   Updated: 2022/05/05 06:40:00 by Anthony          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,22 @@ t_list	ft_select_pvt(t_list *lst, int size, int third)
 		lst = lst->next;
 	}
 	return (pivot);
+}
+
+t_move	ft_move(t_list *a, t_list *b, t_info *info)
+{
+	t_move	ret;
+
+	ft_bzero(&ret, sizeof(t_move));
+	if (a->index <= info->size_a / 2)
+		ret.ra_count = a->index;
+	else
+		ret.rra_count = info->size_a - a->index;
+	if (b->index <= info->size_b / 2)
+		ret.rb_count = b->index;
+	else
+		ret.rrb_count = info->size_b - b->index;
+	return (ret);
 }
 
 t_move	ft_save_move(t_move *move)

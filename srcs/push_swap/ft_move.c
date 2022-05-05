@@ -1,5 +1,7 @@
 #include "push_swap.h"
 
+ft_
+
 ft_rotate_both(t_stack *stack, t_move *move)
 
 void	ft_move(t_stack *stack, t_move move)
