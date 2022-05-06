@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Anthony <Anthony@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 13:38:02 by alevasse          #+#    #+#             */
-/*   Updated: 2022/05/05 22:09:51 by Anthony          ###   ########.fr       */
+/*   Updated: 2022/05/06 08:30:34 by alevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct s_stack {
 typedef struct s_info {
 	int		size_a;
 	int		size_b;
-	t_list	last_a;
+	t_list	*last_a;
 	t_list	*top_a;
 	t_list	*top_b;
 	t_list	small_pvt;
@@ -41,6 +41,7 @@ typedef struct s_move {
 	int	rra_count;
 	int	rb_count;
 	int	rrb_count;
+	int	sum;
 }		t_move;
 
 t_list		*ft_parsing(int argc, char **argv);
@@ -66,15 +67,16 @@ void		ft_a_to_b_2(t_stack *stack, t_info *info, t_move *move);
 void		ft_b_to_a_2(t_stack *stack, t_info *info, t_move *move);
 int			ft_chunck_size(t_list *lst, int chunck);
 void		ft_mini_swap(t_stack *stack);
-void	ft_chunck(t_list *a);
+void		ft_chunck(t_list *a);
 void		ft_a_to_b_3(t_stack *stack, t_info *info, t_move *move, int size);
 void		ft_b_to_a_3(t_stack *stack, t_info *info, t_move *move, int size);
 void		ft_b_to_a(t_stack *stack, t_info *info);
-t_move		ft_move(t_stack *stack, t_move move);
+void		ft_move(t_stack *stack, t_move move);
 void		ft_move_ab(t_stack *stack, t_move *move);
 void		ft_define_move(t_stack *stack, t_info *info, t_move *move);
 void		ft_add_move(t_stack *stack, t_info *info, t_move *move);
-int			ft_check_condition(t_info *info);
+int			ft_check_condition(t_stack *stack, t_info *info);
 void		ft_add_info(t_stack *stack, t_info *info);
+void		ft_save_move(t_move move, t_move *save);
 
 #endif
