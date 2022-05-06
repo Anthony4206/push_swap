@@ -6,7 +6,7 @@
 /*   By: Anthony <Anthony@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 07:21:31 by alevasse          #+#    #+#             */
-/*   Updated: 2022/05/05 18:40:08 by Anthony          ###   ########.fr       */
+/*   Updated: 2022/05/05 22:00:38 by Anthony          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@ void	ft_a_to_b(t_stack *stack, t_info *info)
 	info->tall_pvt = ft_select_pvt(stack->a, len, 2);
 	while (len--)
 	{	
-		info->top_a = *stack->a;
-		if (info->top_a.place >= info->tall_pvt.place)
+		info->top_a = stack->a;
+		if (info->top_a->place >= info->tall_pvt.place)
 			ft_rotate_a(&(stack->a), 1);
 		else
 		{
 			ft_push_b(&(stack->b), &(stack->a));
-			if (info->top_a.place < info->small_pvt.place)
+			if (info->top_a->place < info->small_pvt.place)
 				ft_rotate_b(&(stack->b), 1);
 		}
 	}

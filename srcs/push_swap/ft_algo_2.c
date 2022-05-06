@@ -6,7 +6,7 @@
 /*   By: Anthony <Anthony@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 14:49:44 by alevasse          #+#    #+#             */
-/*   Updated: 2022/05/05 21:08:31 by Anthony          ###   ########.fr       */
+/*   Updated: 2022/05/05 22:10:17 by Anthony          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ void	ft_mini_swap(t_stack *stack)
 
 void	ft_add_info(t_stack *stack, t_info *info)
 {
-	info->top_a = *stack->a;
-	info->top_b = *stack->b;
+	info->top_a = stack->a;
+	info->top_b = stack->b;
 	info->last_a = *ft_lstlast(stack->a);
 	info->size_a = ft_lstsize(stack->a);
 	info->size_b = ft_lstsize(stack->b);
@@ -61,12 +61,12 @@ void	ft_pb_or_ra(t_stack *stack, t_chunck chunck, int len)
 
 int	ft_check_condition(t_info *info)
 {
-	if (info->top_a.place > info->top_b.place &&
-		(info->top_a.place < info->last_a.place 
-			|| info->top_b.place > info->last_a.place))
+	if (info->top_a->place > info->top_b->place &&
+		(info->top_a->place < info->last_a.place 
+			|| info->top_b->place > info->last_a.place))
 		return (1);
-	else if (info->top_a.place < info->last_a.place
-			&& info->top_b.place > info->last_a.place)
+	else if (info->top_a->place < info->last_a.place
+			&& info->top_b->place > info->last_a.place)
 		return (1);
 	return (0);
 }
@@ -88,8 +88,8 @@ void	ft_define_move(t_stack *stack, t_info *info, t_move *move)
 	ft_bzero(&move, sizeof(t_move));
 	while (stack->b)
 	{
-		ft_printf("Coucou\n");
-		*stack->a = info->top_a;
+		ft_printf("%d\n", info->top_a->place);
+		stack->a = info->top_a;
 		ft_printf("Coucou\n");
 //		ft_add_info(stack, info);
 		while (stack->a)
