@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Anthony <Anthony@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 13:33:55 by alevasse          #+#    #+#             */
-/*   Updated: 2022/05/06 09:27:58 by alevasse         ###   ########.fr       */
+/*   Updated: 2022/05/06 15:41:05 by Anthony          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ int	main(int argc, char **argv)
 {
 	t_stack		stack;
 	t_info		info;
-//	t_list		*tmp;
-//	t_list		*tmp2;
+	t_list		*tmp;
+	t_list		*tmp2;
 
 	if (argc < 2)
 		return (0);
@@ -48,7 +48,7 @@ int	main(int argc, char **argv)
 	ft_a_to_b(&stack, &info);
 //	ft_printf("*********\n");
 	ft_b_to_a(&stack, &info);
-/*	tmp = stack.a;
+	tmp = stack.a;
 	tmp2 = stack.b;
 	while (stack.a)
 	{
@@ -68,6 +68,6 @@ int	main(int argc, char **argv)
 		stack.b = stack.b->next;
 	}
 	stack.a = tmp;
-	stack.b = tmp2;*/
+	stack.b = tmp2;
 	return (0);
 }

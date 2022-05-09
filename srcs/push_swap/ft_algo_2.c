@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_algo_2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Anthony <Anthony@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 14:49:44 by alevasse          #+#    #+#             */
-/*   Updated: 2022/05/06 13:06:28 by alevasse         ###   ########.fr       */
+/*   Updated: 2022/05/08 19:26:20 by Anthony          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void	ft_define_move(t_stack *stack, t_info *info, t_move *move)
 	while (stack->b)
 	{
 		stack->a = info->top_a;
-		info->last_a->value = ft_lstlast(stack->a)->value;
+		info->last_a->place = ft_lstlast(stack->a)->place;
 		while (stack->a)
 		{
 			if (ft_check_condition(stack, info))
@@ -112,7 +112,7 @@ void	ft_define_move(t_stack *stack, t_info *info, t_move *move)
 				ft_add_move(stack, info, move);
 				break ;
 			}
-			info->last_a->value = stack->a->value;
+			info->last_a->place = stack->a->place;
 			stack->a = stack->a->next;
 		}
 		stack->b = stack->b->next;
@@ -163,6 +163,7 @@ void	ft_move(t_stack *stack, t_move move)
 		ft_reverse_rotate_b(&stack->b, 1);
 		move.rrb_count--;
 	}
+	ft_push_a(&(stack->a), &(stack->b));
 /*	tmp = stack->a;
 	tmp2 = stack->b;
 	while (stack->a)
@@ -201,7 +202,7 @@ void	ft_save_move(t_move move, t_move *save)
 void	ft_b_to_a(t_stack *stack, t_info *info)
 {
 	t_move	move;
-//	t_move	save;
+	t_move	save;
 
 	while (stack->b)
 	{
@@ -214,9 +215,9 @@ void	ft_b_to_a(t_stack *stack, t_info *info)
 			ft_add_index(&stack->b);
 			ft_bzero(&move, sizeof(t_move));
 			ft_define_move(stack, info, &move);
-//			ft_bzero(&save, sizeof(t_move));
-//			ft_save_move(move, &save);
-//			ft_printf("Coucou\n");
+			ft_bzero(&save, sizeof(t_move));
+			ft_save_move(move, &save);
+
 			ft_move(stack, move);
 		}
 	}
