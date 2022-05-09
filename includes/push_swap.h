@@ -6,7 +6,7 @@
 /*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 13:38:02 by alevasse          #+#    #+#             */
-/*   Updated: 2022/05/06 08:30:34 by alevasse         ###   ########.fr       */
+/*   Updated: 2022/05/09 13:19:56 by alevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,9 @@ void		ft_b_to_a_3(t_stack *stack, t_info *info, t_move *move, int size);
 void		ft_b_to_a(t_stack *stack, t_info *info);
 void		ft_move(t_stack *stack, t_move move);
 void		ft_move_ab(t_stack *stack, t_move *move);
-void		ft_define_move(t_stack *stack, t_info *info, t_move *move);
+void		ft_define_move(t_stack stack, t_info *info, t_move *move, t_move *save);
 void		ft_add_move(t_stack *stack, t_info *info, t_move *move);
-int			ft_check_condition(t_stack *stack, t_info *info);
+int			ft_check_condition(t_stack *stack);
 void		ft_add_info(t_stack *stack, t_info *info);
 void		ft_save_move(t_move move, t_move *save);
 

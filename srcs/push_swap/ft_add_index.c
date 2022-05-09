@@ -6,7 +6,7 @@
 /*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 07:06:21 by alevasse          #+#    #+#             */
-/*   Updated: 2022/04/25 07:26:11 by alevasse         ###   ########.fr       */
+/*   Updated: 2022/05/09 09:08:14 by alevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_add_index(t_list **a)
 	while (*a)
 	{
 		(*a)->index = i++;
-		(*a) = (*a)->next;
+		*a = (*a)->next;
 	}
 	*a = start;
 }

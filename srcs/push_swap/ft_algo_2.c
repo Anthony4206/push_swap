@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_algo_2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Anthony <Anthony@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 14:49:44 by alevasse          #+#    #+#             */
-/*   Updated: 2022/05/08 19:26:20 by Anthony          ###   ########.fr       */
+/*   Updated: 2022/05/09 14:05:56 by alevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ void	ft_mini_swap(t_stack *stack)
 
 void	ft_add_info(t_stack *stack, t_info *info)
 {
-	info->top_a = stack->a;
-	info->top_b = stack->b;
+//	info->top_a = stack->a;
+//	info->top_b = stack->b;
 	info->last_a = ft_lstlast(stack->a);
 	info->size_a = ft_lstsize(stack->a);
 	info->size_b = ft_lstsize(stack->b);
@@ -61,6 +61,8 @@ void	ft_pb_or_ra(t_stack *stack, t_chunck chunck, int len)
 
 void	ft_add_move(t_stack *stack, t_info *info, t_move *move)
 {
+	info->size_a = ft_lstsize(stack->a);
+	info->size_b = ft_lstsize(stack->b);
 	if (stack->a->index <= info->size_a / 2)
 		move->ra_count = stack->a->index;
 	else
@@ -73,52 +75,19 @@ void	ft_add_move(t_stack *stack, t_info *info, t_move *move)
 		+ move->rb_count + move->rrb_count;
 }
 
-int	ft_check_condition(t_stack *stack, t_info *info)
+int	ft_check_condition(t_stack *stack)
 {
+	int	last_a;
+
+	last_a = ft_lstlast(stack->a)->place;
 	if (stack->a->place > stack->b->place
-		&& (stack->a->place < info->last_a->place
-			|| stack->b->place > info->last_a->place))
-	{
-//		ft_printf("Coucou\n");
+		&& (stack->a->place < last_a
+			|| stack->b->place > last_a))
 		return (1);
-	}
-	else if (stack->a->place < info->last_a->place
-		&& stack->b->place > info->last_a->place)
-	{
-//		ft_printf("Coucou\n");
+	else if (stack->a->place < last_a
+		&& stack->b->place > last_a)
 		return (1);
-	}
 	return (0);
-}
-
-void	ft_define_move(t_stack *stack, t_info *info, t_move *move)
-{	
-	t_list	*tmp_a;
-	t_list	*tmp_b;
-
-	info->top_a = stack->a;
-	tmp_a = stack->a;
-	tmp_b = stack->b;
-	while (stack->b)
-	{
-		stack->a = info->top_a;
-		info->last_a->place = ft_lstlast(stack->a)->place;
-		while (stack->a)
-		{
-			if (ft_check_condition(stack, info))
-			{
-//				ft_bzero(&move, sizeof(t_move));
-//				ft_printf("Coucou\n");
-				ft_add_move(stack, info, move);
-				break ;
-			}
-			info->last_a->place = stack->a->place;
-			stack->a = stack->a->next;
-		}
-		stack->b = stack->b->next;
-	}
-	stack->a = tmp_a;
-	stack->b = tmp_b;
 }
 
 void	ft_move_ab(t_stack *stack, t_move *move)
@@ -139,9 +108,6 @@ void	ft_move_ab(t_stack *stack, t_move *move)
 
 void	ft_move(t_stack *stack, t_move move)
 {
-//	t_list		*tmp;
-//	t_list		*tmp2;
-
 	ft_move_ab(stack, &move);
 	while (move.ra_count > 0)
 	{
@@ -158,33 +124,12 @@ void	ft_move(t_stack *stack, t_move move)
 		ft_reverse_rotate_a(&stack->a, 1);
 		move.rra_count--;
 	}	
-	while (move.rra_count > 0)
+	while (move.rrb_count > 0)
 	{
 		ft_reverse_rotate_b(&stack->b, 1);
 		move.rrb_count--;
 	}
 	ft_push_a(&(stack->a), &(stack->b));
-/*	tmp = stack->a;
-	tmp2 = stack->b;
-	while (stack->a)
-	{
-		ft_printf("%11d", stack->a->value);
-		ft_putstr(" | ");
-		ft_printf("%-11d\n", stack->a->place);
-		ft_putchar('\n');
-		stack->a = stack->a->next;
-	}
-	ft_putendl("___________________________");
-	while (stack->b)
-	{
-		ft_printf("%11d", stack->b->value);
-		ft_putstr(" | ");
-		ft_printf("%-11d\n", stack->b->place);
-		ft_putchar('\n');
-		stack->b = stack->b->next;
-	}
-	stack->a = tmp;
-	stack->b = tmp2;*/
 }
 
 void	ft_save_move(t_move move, t_move *save)
@@ -199,6 +144,30 @@ void	ft_save_move(t_move move, t_move *save)
 	}
 }
 
+void	ft_define_move(t_stack stack, t_info *info, t_move *move, t_move *save)
+{	
+	int	last_a;
+
+	info->top_a = stack.a;
+	while (stack.b)
+	{
+		stack.a = info->top_a;
+		last_a = ft_lstlast(stack.a)->value;
+		while (stack.a)
+		{
+			if (ft_check_condition(&stack))
+			{
+				ft_add_move(&stack, info, move);
+				ft_save_move(*move, save);
+				break ;
+			}
+			last_a = stack.a->value;
+			stack.a = stack.a->next;
+		}
+		stack.b = stack.b->next;
+	}
+}
+
 void	ft_b_to_a(t_stack *stack, t_info *info)
 {
 	t_move	move;
@@ -206,19 +175,17 @@ void	ft_b_to_a(t_stack *stack, t_info *info)
 
 	while (stack->b)
 	{
-		ft_add_info(stack, info);
-		if (ft_check_condition(stack, info))
+//		ft_add_info(stack, info);
+		if (ft_check_condition(stack))
 			ft_push_a(&(stack->a), &(stack->b));
 		else
 		{
 			ft_add_index(&stack->a);
 			ft_add_index(&stack->b);
 			ft_bzero(&move, sizeof(t_move));
-			ft_define_move(stack, info, &move);
 			ft_bzero(&save, sizeof(t_move));
-			ft_save_move(move, &save);
-
-			ft_move(stack, move);
+			ft_define_move(*stack, info, &move, &save);
+			ft_move(stack, save);
 		}
 	}
 	info->size_a = ft_lstsize(stack->a);

@@ -6,7 +6,7 @@
 /*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 11:36:32 by alevasse          #+#    #+#             */
-/*   Updated: 2022/05/02 14:44:36 by alevasse         ###   ########.fr       */
+/*   Updated: 2022/05/09 14:43:33 by alevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ void	ft_rotate_a(t_list **a, int print)
 	chr->next = tmp;
 	tmp->next = NULL;
 	if (print)
-		ft_printf("ra\n");}
+		ft_printf("ra\n");
+}
 
 void	ft_reverse_rotate_a(t_list **a, int print)
 {
