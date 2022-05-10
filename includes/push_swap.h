@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Anthony <Anthony@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 13:38:02 by alevasse          #+#    #+#             */
-/*   Updated: 2022/05/09 22:14:09 by Anthony          ###   ########.fr       */
+/*   Updated: 2022/05/10 13:08:46 by alevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void		ft_move(t_stack *stack, t_move move);
 void		ft_move_ab(t_stack *stack, t_move *move);
 void		ft_define_move(t_stack stack, t_info *info, t_move *move, t_move *save);
 void		ft_add_move(t_stack *stack, t_info *info, t_move *move);
-int			ft_check_condition(t_stack *stack);
+int			ft_check_condition(int a_place, int last_a, int b_place);
 void		ft_add_info(t_stack *stack, t_info *info);
 void		ft_save_move(t_move move, t_move *save);
 

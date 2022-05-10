@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_algo_2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Anthony <Anthony@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 14:49:44 by alevasse          #+#    #+#             */
-/*   Updated: 2022/05/10 07:50:57 by Anthony          ###   ########.fr       */
+/*   Updated: 2022/05/10 14:02:29 by alevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,26 +59,15 @@ void	ft_pb_or_ra(t_stack *stack, t_chunck chunck, int len)
 		ft_rotate_a(&(stack->a), 1);
 }
 
-int	ft_check_condition(t_stack *stack)
+int	ft_check_condition(int a_place, int last_a, int b_place)
 {
-	int	last_a;
-
-	last_a = ft_lstlast(stack->a)->place;
-	if (stack->a->place > stack->b->place
-		&& (stack->a->place < last_a
-			|| stack->b->place > last_a))
-	{
-		if (stack->b->place == 8)
-			ft_printf("Coucou 8\n");
+	if (a_place > b_place
+		&& (a_place < last_a
+			|| b_place > last_a))
 		return (1);
-	}
-	else if (stack->a->place < last_a
-		&& stack->b->place > last_a)
-	{
-		if (stack->b->place == 8)
-			ft_printf("Coucou 8\n");
+	else if (a_place < last_a
+		&& b_place > last_a)
 		return (1);
-	}
 	return (0);
 }
 
@@ -168,25 +157,16 @@ void	ft_define_move(t_stack stack, t_info *info, t_move *move, t_move *save)
 	while (stack.b)
 	{
 		stack.a = info->top_a;
-		last_a = ft_lstlast(stack.a)->value;
+		last_a = ft_lstlast(stack.a)->place;
 		while (stack.a)
 		{
-			if (stack.b->place == 8)
+			if (ft_check_condition(stack.a->place, last_a, stack.b->place))
 			{
-				ft_printf("%d\n", stack.a->place);
-				ft_printf("%d\n", stack.b->place);
-				ft_printf("%d\n", last_a);
-				ft_printf("***************\n");
-			}
-			if (ft_check_condition(&stack))
-			{
-				if (stack.b->place == 8)
-					ft_printf("Coucou 8\n");
 				ft_add_move(&stack, info, move);
 				ft_save_move(*move, save);
-//				break ;
+				break ;
 			}
-			last_a = stack.a->value;
+			last_a = stack.a->place;
 			stack.a = stack.a->next;
 		}
 		stack.b = stack.b->next;
@@ -200,8 +180,7 @@ void	ft_b_to_a(t_stack *stack, t_info *info)
 
 	while (stack->b)
 	{
-//		ft_add_info(stack, info);
-		if (ft_check_condition(stack))
+		if (ft_check_condition(stack->a->place, ft_lstlast(stack->a)->place, stack->b->place))
 			ft_push_a(&(stack->a), &(stack->b));
 		else
 		{
