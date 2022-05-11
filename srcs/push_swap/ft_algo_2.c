@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_algo_2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Anthony <Anthony@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 14:49:44 by alevasse          #+#    #+#             */
-/*   Updated: 2022/05/10 14:02:29 by alevasse         ###   ########.fr       */
+/*   Updated: 2022/05/10 18:07:03 by Anthony          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,8 +152,6 @@ void	ft_define_move(t_stack stack, t_info *info, t_move *move, t_move *save)
 	info->top_a = stack.a;
 	info->size_b = ft_lstsize(stack.b);
 	info->size_a = ft_lstsize(stack.a);
-	ft_bzero(save, sizeof(t_move));
-	ft_bzero(move, sizeof(t_move));
 	while (stack.b)
 	{
 		stack.a = info->top_a;
@@ -162,6 +160,7 @@ void	ft_define_move(t_stack stack, t_info *info, t_move *move, t_move *save)
 		{
 			if (ft_check_condition(stack.a->place, last_a, stack.b->place))
 			{
+				ft_bzero(move, sizeof(t_move));
 				ft_add_move(&stack, info, move);
 				ft_save_move(*move, save);
 				break ;
@@ -186,6 +185,7 @@ void	ft_b_to_a(t_stack *stack, t_info *info)
 		{
 			ft_add_index(&stack->a);
 			ft_add_index(&stack->b);
+			ft_bzero(&save, sizeof(t_move));
 			ft_define_move(*stack, info, &move, &save);
 //			ft_printf("%d\n", save.sum);
 			ft_move(stack, save);
