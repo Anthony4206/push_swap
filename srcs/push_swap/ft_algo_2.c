@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_algo_2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Anthony <Anthony@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 14:49:44 by alevasse          #+#    #+#             */
-/*   Updated: 2022/05/10 18:07:03 by Anthony          ###   ########.fr       */
+/*   Updated: 2022/05/11 14:31:47 by alevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,16 +127,10 @@ void	ft_save_move(t_move move, t_move *save)
 
 void	ft_add_move(t_stack *stack, t_info *info, t_move *move)
 {
-//	ft_printf("%d\n", info->size_a);
 	if (stack->a->index <= info->size_a / 2)
 		move->ra_count = stack->a->index;
 	else
-	{
-//		if (stack->b->place == 10)
 		move->rra_count = info->size_a - stack->a->index;
-//		ft_printf("*************\n");
-//		ft_printf("%d\n", move->rra_count);
-	}
 	if (stack->b->index <= info->size_b / 2)
 		move->rb_count = stack->b->index;
 	else

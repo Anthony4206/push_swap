@@ -5,24 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/21 13:33:55 by alevasse          #+#    #+#             */
-/*   Updated: 2022/05/11 14:12:01 by alevasse         ###   ########.fr       */
+/*   Created: 2022/05/11 07:52:44 by alevasse          #+#    #+#             */
+/*   Updated: 2022/05/11 10:06:56 by alevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker_bonus.h"
 
 int	main(int argc, char **argv)
 {
-	t_stack		stack;
-	t_info		info;
+	t_stack stack;
 
 	if (argc < 2)
 		return (0);
 	stack.a = ft_parsing(argc, argv);
 	stack.b = NULL;
-	ft_add_place(&stack.a);
-	ft_a_to_b(&stack, &info);
-	ft_b_to_a(&stack, &info);
 	return (0);
 }

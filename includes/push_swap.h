@@ -6,7 +6,7 @@
 /*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 13:38:02 by alevasse          #+#    #+#             */
-/*   Updated: 2022/05/10 13:08:46 by alevasse         ###   ########.fr       */
+/*   Updated: 2022/05/11 07:47:40 by alevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ void		ft_reverse_rotate_ab(t_list **a, t_list **b);
 
 void		ft_add_index(t_list **a);
 void		ft_add_place(t_list **a);
-//void		ft_add_keep(t_list **a);
 
 t_list		ft_select_pvt(t_list *lst, int size, int third);
 void		ft_a_to_b(t_stack *stack, t_info *info);
@@ -78,5 +77,6 @@ void		ft_add_move(t_stack *stack, t_info *info, t_move *move);
 int			ft_check_condition(int a_place, int last_a, int b_place);
 void		ft_add_info(t_stack *stack, t_info *info);
 void		ft_save_move(t_move move, t_move *save);
+void		ft_a_to_b_3(t_stack *stack, t_info *info, t_move *move, int size);
 
 #endif
