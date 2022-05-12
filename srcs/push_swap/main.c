@@ -6,7 +6,7 @@
 /*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 13:33:55 by alevasse          #+#    #+#             */
-/*   Updated: 2022/05/11 14:12:01 by alevasse         ###   ########.fr       */
+/*   Updated: 2022/05/12 12:47:08 by alevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,13 @@ int	main(int argc, char **argv)
 		return (0);
 	stack.a = ft_parsing(argc, argv);
 	stack.b = NULL;
+	if (ft_lstsize(stack.a) == 3)
+	{
+		ft_mini_swap(&stack);
+		return (EXIT_SUCCESS);
+	}
 	ft_add_place(&stack.a);
 	ft_a_to_b(&stack, &info);
 	ft_b_to_a(&stack, &info);
-	return (0);
+	return (EXIT_SUCCESS);
 }

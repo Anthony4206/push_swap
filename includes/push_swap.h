@@ -6,7 +6,7 @@
 /*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 13:38:02 by alevasse          #+#    #+#             */
-/*   Updated: 2022/05/11 07:47:40 by alevasse         ###   ########.fr       */
+/*   Updated: 2022/05/12 11:39:46 by alevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,13 @@ void		ft_swap_b(t_list **b, int print);
 void		ft_push_b(t_list **b, t_list **a);
 void		ft_rotate_b(t_list **b, int print);
 void		ft_reverse_rotate_b(t_list **b, int print);
-void		ft_swap_ab(t_list **a, t_list **b);
-void		ft_rotate_ab(t_list **a, t_list **b);
-void		ft_reverse_rotate_ab(t_list **a, t_list **b);
+void		ft_swap_ab(t_list **a, t_list **b, int print);
+void		ft_rotate_ab(t_list **a, t_list **b, int print);
+void		ft_reverse_rotate_ab(t_list **a, t_list **b, int print);
 
-void		ft_add_index(t_list **a);
+void		ft_add_index(t_stack *stack);
 void		ft_add_place(t_list **a);
+void		ft_is_error(t_list **lst);
 
 t_list		ft_select_pvt(t_list *lst, int size, int third);
 void		ft_a_to_b(t_stack *stack, t_info *info);

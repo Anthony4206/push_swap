@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_add_place.c                                     :+:      :+:    :+:   */
+/*   ft_add_struct.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 07:28:24 by alevasse          #+#    #+#             */
-/*   Updated: 2022/05/11 08:51:27 by alevasse         ###   ########.fr       */
+/*   Updated: 2022/05/12 11:21:50 by alevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	ft_add_chunck(t_list **a, int place, int len)
-{
-	if (place < (len / 3))
-		(*a)->chunck = 1;
-	else if (place >= ((len / 3) * 2))
-		(*a)->chunck = 3;
-	else
-		(*a)->chunck = 2;
-}
-
-static int	ft_chr_min(t_list **a, int place, int len)
+static int	ft_chr_min(t_list **a, int place)
 {	
 	t_list	*start;
 	int		min;
@@ -39,17 +29,14 @@ static int	ft_chr_min(t_list **a, int place, int len)
 	while (*a)
 	{
 		if ((*a)->value == min)
-		{
 			(*a)->place = place;
-			ft_add_chunck(&(*a), place, len);
-		}
 		*a = (*a)->next;
 	}
 	*a = start;
 	return (min);
 }
 
-static int	ft_chr_next_min(t_list **a, int min, int place, int len)
+static int	ft_chr_next_min(t_list **a, int min, int place)
 {
 	t_list	*start;
 	int		new_min;
@@ -68,10 +55,7 @@ static int	ft_chr_next_min(t_list **a, int min, int place, int len)
 	while (*a)
 	{
 		if ((*a)->value == new_min)
-		{
 			(*a)->place = place;
-			ft_add_chunck(&(*a), place, len);
-		}
 		*a = (*a)->next;
 	}
 	*a = start;
@@ -82,15 +66,36 @@ void	ft_add_place(t_list **a)
 {
 	int	place;
 	int	min;
-	int	len;
 
 	place = 0;
-	len = ft_lstsize(*a);
-	min = ft_chr_min(&(*a), place, len);
+	min = ft_chr_min(&(*a), place);
 	place++;
-	while (place < len)
+	while (place < ft_lstsize(*a))
 	{
-		min = ft_chr_next_min(&(*a), min, place, len);
+		min = ft_chr_next_min(&(*a), min, place);
 		place++;
 	}
+}
+
+void	ft_add_index(t_stack *stack)
+{
+	t_list	*start;
+	int		i;
+
+	i = 0;
+	start = stack->a;
+	while (stack->a)
+	{
+		stack->a->index = i++;
+		stack->a = stack->a->next;
+	}
+	stack->a = start;
+	i = 0;
+	start = stack->b;
+	while (stack->b)
+	{
+		stack->b->index = i++;
+		stack->b = stack->b->next;
+	}
+	stack->b = start;
 }

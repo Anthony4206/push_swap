@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_parsing.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/12 09:43:25 by alevasse          #+#    #+#             */
+/*   Updated: 2022/05/12 10:34:13 by alevasse         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-/*static int	ft_is_error(t_list *lst)
+void	ft_is_error(t_list **lst)
 {
-	ft_lstclear(&lst);
+	ft_lstclear(&(*lst));
 	ft_putendl_fd("Error", STDERR_FILENO);
 	exit(EXIT_FAILURE);
 }
@@ -19,7 +31,7 @@ static void	ft_check_digit(char *argv, t_list *ret)
 		while (argv[i])
 		{
 			if (!ft_isdigit(argv[i]) || !argv[i])
-				ft_is_error(ret);
+				ft_is_error(&ret);
 			i++;
 		}
 	}
@@ -38,10 +50,10 @@ static void	ft_check_double(t_list *ret)
 		{
 			cmp = cmp->next;
 			if (ret->value == cmp->value)
-				ft_is_error(ret);
+				ft_is_error(&ret);
 		}
-		cmp = ret;
 		ret = ret->next;
+		cmp = ret;
 	}
 	ret = tmp;
 }
@@ -66,40 +78,5 @@ t_list	*ft_parsing(int argc, char **argv)
 	}
 	if (i > 1)
 		ft_check_double(ret);
-	return (ret);
-}*/
-static int	ft_is_error(t_list **lst)
-{
-	ft_lstclear(&(*lst));
-	ft_putendl_fd("Error", STDERR_FILENO);
-	exit(EXIT_FAILURE);
-}
-
-t_list	*ft_parsing(int argc, char **argv)
-{
-	t_list	*ret;
-	int		i;
-	int		j;
-
-	ret = NULL;
-	i = 1;
-	if (argc == 2)
-	{
-		argv = ft_split(argv[1], ' ');
-		i = 0;
-	}
-	while (argv[i])
-	{
-		j = 0;
-		if (argv[i][0] == '+' || argv[i][0] == '-')
-				j++;
-		while (argv[i][j])
-		{
-			if (!ft_isdigit(argv[i][j]) || !argv[i][j])
-				ft_is_error(&ret);
-			j++;
-		}
-		ft_lstadd_back(&ret, ft_lstnew(ft_atoi(argv[i++])));
-	}
 	return (ret);
 }

@@ -6,7 +6,7 @@
 /*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 07:21:31 by alevasse          #+#    #+#             */
-/*   Updated: 2022/05/11 08:07:25 by alevasse         ###   ########.fr       */
+/*   Updated: 2022/05/12 10:53:28 by alevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	ft_a_to_b(t_stack *stack, t_info *info)
 {
 	int		len;
 
-	ft_add_place(&stack->a);
 	len = ft_lstsize(stack->a);
 	info->small_pvt = ft_select_pvt(stack->a, len, 1);
 	info->tall_pvt = ft_select_pvt(stack->a, len, 2);
@@ -56,37 +55,28 @@ void	ft_a_to_b(t_stack *stack, t_info *info)
 	}
 }
 
-/*void	ft_a_to_b_3(t_stack *stack, t_info *info, t_move *move, int size)
+void	ft_b_to_a(t_stack *stack, t_info *info)
 {
-	ft_add_place_chunck(&stack->a);
-//	len = ft_lstsize(stack->a);
-	if (size < 3)
-		return ;
-	if (size == 3)
-		ft_mini_swap(stack);
-	ft_bzero(move, sizeof(t_move));
-	info->small_pvt = ft_select_pvt(&(stack->a), size, 1);
-	info->tall_pvt = ft_select_pvt(&(stack->a), size, 2);
-	while (size--)
-	{	
-		info->top_a = *stack->a;
-		if (info->top_a.place >= info->tall_pvt.place)
-		{
-			ft_rotate_a(&(stack->a), 1);
-			move->ra_count++;
-		}
+	t_move	move;
+	t_move	save;
+
+	while (stack->b)
+	{
+		if (ft_check_condition(stack->a->place, ft_lstlast(stack->a)->place, stack->b->place))
+			ft_push_a(&(stack->a), &(stack->b));
 		else
 		{
-			ft_push_b(&(stack->b), &(stack->a));
-			move->pb_count++;
-			if (info->top_a.place >= info->small_pvt.place)
-			{
-				ft_rotate_b(&(stack->b), 1);
-				move->rb_count++;
-			}
+			ft_add_index(stack);
+			ft_bzero(&save, sizeof(t_move));
+			ft_define_move(*stack, info, &move, &save);
+			ft_move(stack, save);
 		}
 	}
-	while (move->ra_count-- && move->rb_count--)
-		ft_reverse_rotate_ab(&(stack->a), &(stack->b));
-	ft_a_to_b_3(stack, info, move, save.ra_count);
-}*/
+	info->size_a = ft_lstsize(stack->a);
+	if (stack->a->place < info->size_a / 2)
+		while (stack->a->place)
+			ft_reverse_rotate_a(&stack->a, 1);
+	else
+		while (stack->a->place)
+			ft_rotate_a(&stack->a, 1);
+}

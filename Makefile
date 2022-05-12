@@ -6,17 +6,17 @@
 #    By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/22 08:07:04 by alevasse          #+#    #+#              #
-#    Updated: 2022/05/11 07:01:19 by alevasse         ###   ########.fr        #
+#    Updated: 2022/05/12 14:26:15 by alevasse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 				= push_swap
+B_NAME				= checker
 
 DIR_SRCS 			= srcs
 DIR_SRCS_B			= bonus
 DIR_OBJS 			= objs
-SUB_DIRS 			= push_swap move
-SUB_DIRS_B			=
+SUB_DIRS 			= push_swap move bonus
 
 SRCS_DIRS 			= ${foreach dir, ${SUB_DIRS}, ${addprefix ${DIR_SRCS}/, ${dir}}}
 SRCS_DIRS_B			= ${foreach dir, ${SUB_DIRS_B}, ${addprefix ${DIR_SRCS_B}/, ${dir}}}
@@ -26,11 +26,16 @@ OBJS_DIRS 			= ${foreach dir, ${SUB_DIRS}, ${addprefix ${DIR_OBJS}/, ${dir}}}
 
 ifndef ADD_BONUS
 		OBJS 	= ${subst ${DIR_SRCS}, ${DIR_OBJS}, ${SRCS:.c=.o}}
+#		SRCS += $(SRCS_B)
+#		_tmpsrc := $(SRCS)
+#		SRCS = $(filter-out ./bonus/main.c, $(_tmpsrc))
 else
 		OBJS	= ${subst ${DIR_SRCS_B}, ${DIR_OBJS}, ${SRCS_B:.c=.o}}
 endif
 
 INCLUDES 		= -I./includes
+
+HEAD			= includes/push_swap.h includes/libft.h includes/checker_bonus.h
 
 MAKE			= ./libft/
 
@@ -48,7 +53,7 @@ RESET			:= "\033[0m"
 
 all: 			${NAME}
 
-${NAME}: 		${OBJS}
+${NAME}: 		${OBJS} ${HEAD}
 				@make all -C ${MAKE}
 				@echo ${GREEN}"Successfully updated 'libft'" ${RESET}
 				@${CC} ${CFLAGS} ${INCLUDES} -o ${NAME} ${OBJS} libft/libft.a
@@ -57,7 +62,7 @@ ${NAME}: 		${OBJS}
 bonus:
 				@make ADD_BONUS=1 all
 
-${DIR_OBJS}/%.o:	${DIR_SRCS}/%.c
+${DIR_OBJS}/%.o:	${DIR_SRCS}/%.c ${HEAD}
 				@mkdir -p ${DIR_OBJS} ${OBJS_DIRS}
 				@${CC} ${CFLAGS} ${INCLUDES} -c $< -o ${@:.c=.o}
 

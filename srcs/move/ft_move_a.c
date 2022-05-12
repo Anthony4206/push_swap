@@ -6,7 +6,7 @@
 /*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 11:36:32 by alevasse          #+#    #+#             */
-/*   Updated: 2022/05/09 14:43:33 by alevasse         ###   ########.fr       */
+/*   Updated: 2022/05/12 09:50:40 by alevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	ft_swap_a(t_list **a, int print)
 	tmp->next = *a;
 	*a = tmp;
 	if (print)
-		ft_printf("sa\n");}
+		ft_printf("sa\n");
+}
 
 void	ft_push_a(t_list **a, t_list **b)
 {
