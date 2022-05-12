@@ -6,7 +6,7 @@
 /*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 13:33:55 by alevasse          #+#    #+#             */
-/*   Updated: 2022/05/12 12:47:08 by alevasse         ###   ########.fr       */
+/*   Updated: 2022/05/12 14:47:32 by alevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	main(int argc, char **argv)
 {
-	t_stack		stack;
-	t_info		info;
+	t_stack	stack;
+	t_info	info;
 
 	if (argc < 2)
 		return (0);
