@@ -1,75 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_algo_2.c                                        :+:      :+:    :+:   */
+/*   ft_move.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 14:49:44 by alevasse          #+#    #+#             */
-/*   Updated: 2022/05/12 11:21:19 by alevasse         ###   ########.fr       */
+/*   Updated: 2022/05/13 08:11:29 by alevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_mini_swap(t_stack *stack)
-{
-	while (ft_lstsize(stack->a) > 3)
-		ft_push_b(&stack->b, &stack->a);
-	if ((stack->a->value < stack->a->next->value)
-		&& (stack->a->next->value < ft_lstlast(stack->a)->value))
-		return ;
-	else if ((ft_lstlast(stack->a)->value < stack->a->value)
-		&& (stack->a->value < stack->a->next->value))
-		ft_reverse_rotate_a(&stack->a, 1);
-	else if ((stack->a->next->value < ft_lstlast(stack->a)->value)
-		&& (ft_lstlast(stack->a)->value > stack->a->value))
-		ft_swap_a(&(stack->a), 1);
-	else if ((stack->a->next->value < ft_lstlast(stack->a)->value)
-		&& (ft_lstlast(stack->a)->value < stack->a->value))
-		ft_rotate_a(&(stack->a), 1);
-	else if ((stack->a->value > stack->a->next->value)
-		&& (stack->a->next->value > ft_lstlast(stack->a)->value))
-	{
-		ft_swap_a(&(stack->a), 1);
-		ft_reverse_rotate_a(&(stack->a), 1);
-	}
-	else
-	{
-		ft_swap_a(&(stack->a), 1);
-		ft_rotate_a(&(stack->a), 1);
-	}
-}
-
-void	ft_add_info(t_stack *stack, t_info *info)
-{
-	info->last_a = ft_lstlast(stack->a);
-	info->size_a = ft_lstsize(stack->a);
-	info->size_b = ft_lstsize(stack->b);
-}
-
-void	ft_pb_or_ra(t_stack *stack, t_chunck chunck, int len)
-{
-	if (((stack->a->index < chunck.start) || (stack->a->index > chunck.end))
-		&& (!len || (stack->a->place < len)))
-		ft_push_b(&(stack->b), &(stack->a));
-	else
-		ft_rotate_a(&(stack->a), 1);
-}
-
-int	ft_check_condition(int a_place, int last_a, int b_place)
-{
-	if (a_place > b_place
-		&& (a_place < last_a
-			|| b_place > last_a))
-		return (1);
-	else if (a_place < last_a
-		&& b_place > last_a)
-		return (1);
-	return (0);
-}
-
-void	ft_move_ab(t_stack *stack, t_move *move)
+static void	ft_move_ab(t_stack *stack, t_move *move)
 {
 	while (move->ra_count > 0 && move->rb_count > 0)
 	{
@@ -77,7 +20,7 @@ void	ft_move_ab(t_stack *stack, t_move *move)
 		move->ra_count--;
 		move->rb_count--;
 	}
-	while (move->ra_count > 0 && move->rb_count > 0)
+	while (move->rra_count > 0 && move->rrb_count > 0)
 	{
 		ft_reverse_rotate_ab(&stack->a, &stack->b, 1);
 		move->rra_count--;
@@ -137,16 +80,16 @@ void	ft_add_move(t_stack *stack, t_info *info, t_move *move)
 		+ move->rb_count + move->rrb_count;
 }
 
-void	ft_define_move(t_stack stack, t_info *info, t_move *move, t_move *save)
+void	ft_def_move(t_stack stack, t_info *info, t_move *move, t_move *save)
 {	
 	int	last_a;
 
-	info->top_a = stack.a;
+	info->tmp = stack.a;
 	info->size_b = ft_lstsize(stack.b);
 	info->size_a = ft_lstsize(stack.a);
 	while (stack.b)
 	{
-		stack.a = info->top_a;
+		stack.a = info->tmp;
 		last_a = ft_lstlast(stack.a)->place;
 		while (stack.a)
 		{

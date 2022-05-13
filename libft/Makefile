@@ -6,7 +6,7 @@
 #    By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/29 07:00:06 by alevasse          #+#    #+#              #
-#    Updated: 2022/05/11 11:47:09 by alevasse         ###   ########.fr        #
+#    Updated: 2022/05/13 12:09:30 by alevasse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ DIR_OBJS 		= objs
 SUB_DIRS 		= gnl is lst mem printf put str to
 
 SRCS_DIRS 		= ${foreach dir, ${SUB_DIRS}, ${addprefix ${DIR_SRCS}/, ${dir}}}
-SRCS 			= ${foreach dir, ${SRCS_DIRS}, ${wildcard ${dir}/*.c}}
+SRCS 			= ${foreach dir, ${SRCS_DIRS}, 	${dir}/*.c}
 OBJS_DIRS 		= ${foreach dir, ${SUB_DIRS}, ${addprefix ${DIR_OBJS}/, ${dir}}}
 OBJS 			= ${subst ${DIR_SRCS}, ${DIR_OBJS}, ${SRCS:.c=.o}}
 

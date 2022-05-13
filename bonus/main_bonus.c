@@ -6,16 +6,11 @@
 /*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 07:52:44 by alevasse          #+#    #+#             */
-/*   Updated: 2022/05/12 14:46:18 by alevasse         ###   ########.fr       */
+/*   Updated: 2022/05/13 06:48:46 by alevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker_bonus.h"
-
-void	ft_make_input(t_stack *stack)
-{
-
-}
 
 int	main(int argc, char **argv)
 {

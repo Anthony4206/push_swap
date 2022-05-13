@@ -6,7 +6,7 @@
 #    By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/22 08:07:04 by alevasse          #+#    #+#              #
-#    Updated: 2022/05/12 14:26:15 by alevasse         ###   ########.fr        #
+#    Updated: 2022/05/13 15:09:05 by alevasse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,9 +26,6 @@ OBJS_DIRS 			= ${foreach dir, ${SUB_DIRS}, ${addprefix ${DIR_OBJS}/, ${dir}}}
 
 ifndef ADD_BONUS
 		OBJS 	= ${subst ${DIR_SRCS}, ${DIR_OBJS}, ${SRCS:.c=.o}}
-#		SRCS += $(SRCS_B)
-#		_tmpsrc := $(SRCS)
-#		SRCS = $(filter-out ./bonus/main.c, $(_tmpsrc))
 else
 		OBJS	= ${subst ${DIR_SRCS_B}, ${DIR_OBJS}, ${SRCS_B:.c=.o}}
 endif

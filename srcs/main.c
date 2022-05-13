@@ -6,7 +6,7 @@
 /*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 13:33:55 by alevasse          #+#    #+#             */
-/*   Updated: 2022/05/12 14:47:32 by alevasse         ###   ########.fr       */
+/*   Updated: 2022/05/13 08:20:49 by alevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,9 @@ int	main(int argc, char **argv)
 	ft_add_place(&stack.a);
 	ft_a_to_b(&stack, &info);
 	ft_b_to_a(&stack, &info);
+	if (stack.a)
+		ft_lstclear(&stack.a);
+	if (stack.b)
+		ft_lstclear(&stack.b);
 	return (EXIT_SUCCESS);
 }
