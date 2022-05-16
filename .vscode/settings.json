@@ -1,6 +1,7 @@
 {
 	"files.associations": {
 		"libft.h": "c",
-		"stdarg.h": "c"
+		"stdarg.h": "c",
+		"checker_bonus.h": "c"
 	}
 }

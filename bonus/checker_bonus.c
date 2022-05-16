@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   checker_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 07:31:23 by alevasse          #+#    #+#             */
-/*   Updated: 2022/05/12 14:46:47 by alevasse         ###   ########.fr       */
+/*   Updated: 2022/05/16 14:25:37 by alevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ void	ft_move_input(t_stack *stack, char *move)
 	else if (!ft_strcmp(move, "rr"))
 		ft_rotate_ab(&stack->a, &stack->b, 0);
 	else if (!ft_strcmp(move, "rra"))
-		ft_revers_rotate_a(&stack->a, 0);
+		ft_reverse_rotate_a(&stack->a, 0);
 	else if (!ft_strcmp(move, "rrb"))
 		ft_reverse_rotate_b(&stack->b, 0);
 	else if (!ft_strcmp(move, "rrr"))
 		ft_reverse_rotate_ab(&stack->a, &stack->b, 0);
 	else
-		ft_is_error(stack->a);
+		ft_is_error(&stack->a);
 }
 
 char	**ft_take_input(void)
@@ -76,7 +76,7 @@ int	ft_checker(t_stack *stack)
 {
 	if (stack->b)
 		return (0);
-	while (stack->a)
+	while (stack->a->next)
 	{
 		if (stack->a->value > stack->a->next->value)
 			return (0);

@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_bonus.c                                       :+:      :+:    :+:   */
+/*   ft_move_ab_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/11 07:52:44 by alevasse          #+#    #+#             */
-/*   Updated: 2022/05/16 14:21:59 by alevasse         ###   ########.fr       */
+/*   Created: 2022/04/22 11:36:24 by alevasse          #+#    #+#             */
+/*   Updated: 2022/05/16 12:31:56 by alevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker_bonus.h"
 
-int	main(int argc, char **argv)
+void	ft_swap_ab(t_list **a, t_list **b, int print)
 {
-	t_stack	stack;
+	ft_swap_a(&(*a), 0);
+	ft_swap_b(&(*b), 0);
+	if (print)
+		ft_printf("ss\n");
+}
 
-	if (argc < 2)
-		return (0);
-	stack.a = ft_parsing(argc, argv);
-	stack.b = NULL;
-	ft_make_input(&stack);
-	if (ft_checker(&stack))
-		ft_printf("OK\n");
-	else
-		ft_printf("KO\n");
-	if (stack.a)
-		ft_lstclear(&stack.a);
-	if (stack.b)
-		ft_lstclear(&stack.b);
-	return (EXIT_SUCCESS);
+void	ft_rotate_ab(t_list **a, t_list **b, int print)
+{
+	ft_rotate_a(&(*a), 0);
+	ft_rotate_b(&(*b), 0);
+	if (print)
+		ft_printf("rr\n");
+}
+
+void	ft_reverse_rotate_ab(t_list **a, t_list **b, int print)
+{
+	ft_reverse_rotate_a(&(*a), 0);
+	ft_reverse_rotate_b(&(*b), 0);
+	if (print)
+		ft_printf("rrr\n");
 }

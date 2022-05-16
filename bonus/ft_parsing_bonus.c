@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parsing.c                                       :+:      :+:    :+:   */
+/*   ft_parsing_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 09:43:25 by alevasse          #+#    #+#             */
-/*   Updated: 2022/05/12 10:34:13 by alevasse         ###   ########.fr       */
+/*   Updated: 2022/05/16 12:31:27 by alevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker_bonus.h"
 
 void	ft_is_error(t_list **lst)
 {
@@ -43,25 +43,26 @@ static void	ft_check_double(t_list *ret)
 	t_list	*cmp;
 
 	tmp = ret;
-	cmp = ret;
-	while (ret->next->next)
+	cmp = ret->next;
+	while (ret->next)
 	{
-		while (cmp->next)
+		while (cmp)
 		{
-			cmp = cmp->next;
 			if (ret->value == cmp->value)
 				ft_is_error(&ret);
+			cmp = cmp->next;
 		}
 		ret = ret->next;
-		cmp = ret;
+		cmp = ret->next;
 	}
 	ret = tmp;
 }
 
 t_list	*ft_parsing(int argc, char **argv)
 {
-	t_list	*ret;
-	int		i;
+	t_list		*ret;
+	int			i;
+	long int	nb;
 
 	ret = NULL;
 	i = 1;
@@ -73,7 +74,10 @@ t_list	*ft_parsing(int argc, char **argv)
 	while (argv[i])
 	{
 		ft_check_digit(argv[i], ret);
-		ft_lstadd_back(&ret, ft_lstnew(ft_atoi(argv[i])));
+		nb = ft_atol(argv[i]);
+		if (nb > INT32_MAX || nb < INT32_MIN)
+			ft_is_error(&ret);
+		ft_lstadd_back(&ret, ft_lstnew((int)nb));
 		i++;
 	}
 	if (i > 1)
