@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Anthony <Anthony@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 15:33:40 by alevasse          #+#    #+#             */
-/*   Updated: 2022/05/16 13:52:01 by alevasse         ###   ########.fr       */
+/*   Updated: 2022/05/17 16:22:20 by Anthony          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ void		*ft_memchr(void const *s, int c, size_t n);
 int			ft_memcmp(void const *s1, void const *s2, size_t n);
 void		*ft_calloc(size_t count, size_t size);
 void		*ft_memalloc(size_t size);
+void		*ft_realloc(void *ptr, size_t size);
+int			ft_free_tab(char **split, size_t len);
 
 int			ft_toupper(int c);
 int			ft_tolower(int c);

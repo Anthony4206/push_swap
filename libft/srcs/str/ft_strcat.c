@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Anthony <Anthony@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 08:17:30 by alevasse          #+#    #+#             */
-/*   Updated: 2022/05/16 13:57:07 by alevasse         ###   ########.fr       */
+/*   Updated: 2022/05/16 19:02:24 by Anthony          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,14 @@
 
 char	*ft_strcat(char *dst, const char *src)
 {
-	size_t	i;
+	size_t	src_len;
 	size_t	dst_len;
 
-	i = 0;
 	if (!dst)
 		return (ft_strdup(src));
+	src_len = ft_strlen(src);
 	dst_len = ft_strlen(dst);
-	while (src[i])
-	{
-		dst[dst_len + i] = src[i];
-		i++;
-	}
-	dst[dst_len + i] = '\0';
+	dst = (char *)ft_realloc(dst, src_len + dst_len + 1);
+	ft_strcpy(dst + dst_len, src);
 	return (dst);
 }

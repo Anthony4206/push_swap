@@ -3,14 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   checker_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Anthony <Anthony@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 07:31:23 by alevasse          #+#    #+#             */
-/*   Updated: 2022/05/16 14:25:37 by alevasse         ###   ########.fr       */
+/*   Updated: 2022/05/16 18:32:30 by Anthony          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker_bonus.h"
+
+void	ft_error(t_stack *stack)
+{
+	if (stack->a)
+		ft_lstclear(&stack->a);
+	if (stack->b)
+		ft_lstclear(&stack->b);
+	ft_putendl_fd("Error", STDERR_FILENO);
+	exit(EXIT_FAILURE);
+}
 
 void	ft_move_input(t_stack *stack, char *move)
 {
@@ -37,7 +47,7 @@ void	ft_move_input(t_stack *stack, char *move)
 	else if (!ft_strcmp(move, "rrr"))
 		ft_reverse_rotate_ab(&stack->a, &stack->b, 0);
 	else
-		ft_is_error(&stack->a);
+		ft_error(stack);
 }
 
 char	**ft_take_input(void)

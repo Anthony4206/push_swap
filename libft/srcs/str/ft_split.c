@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Anthony <Anthony@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 11:25:35 by alevasse          #+#    #+#             */
-/*   Updated: 2022/03/30 15:15:42 by alevasse         ###   ########.fr       */
+/*   Updated: 2022/05/17 16:18:52 by Anthony          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,6 @@ static size_t	ft_count_str(char const *s, char c)
 		i++;
 	}
 	return (nb_str);
-}
-
-static int	ft_free_tab(char **split, size_t len)
-{
-	size_t	i;
-
-	i = 0;
-	while (split[i] && i < len)
-	{
-		free(split[i]);
-		i++;
-	}
-	free(split);
-	return (-1);
 }
 
 static int	ft_tab_split(char **split, char const *s, char c)

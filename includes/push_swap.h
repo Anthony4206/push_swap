@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Anthony <Anthony@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 13:38:02 by alevasse          #+#    #+#             */
-/*   Updated: 2022/05/16 12:12:50 by alevasse         ###   ########.fr       */
+/*   Updated: 2022/05/17 22:14:23 by Anthony          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	ft_a_to_b(t_stack *stack, t_info *info);
 void	ft_b_to_a(t_stack *stack, t_info *info);
 void	ft_add_index(t_stack *stack);
 void	ft_add_place(t_list **a);
-void	ft_is_error(t_list **lst);
+void	ft_is_error(t_list *lst);
 void	ft_move(t_stack *stack, t_move move);
 void	ft_def_move(t_stack stack, t_info *info, t_move *move, t_move *save);
 void	ft_add_move(t_stack *stack, t_info *info, t_move *move);
@@ -52,8 +52,10 @@ void	ft_save_move(t_move move, t_move *save);
 int		ft_check_order(t_list *a);
 void	ft_push_swap(t_stack *stack, t_info *info);
 void	ft_small_a_to_b(t_stack *stack);
+void	ft_free_split(int argc, char **argv, int i);
 
-t_list	*ft_parsing(int argc, char **argv);
+t_list	*ft_parsing(int argc, char **argv, t_list *ret, int i);
+t_list	*ft_add_parsing(int argc, char **argv);
 void	ft_swap_a(t_list **a, int print);
 void	ft_push_a(t_list **a, t_list **b);
 void	ft_rotate_a(t_list **a, int print);
