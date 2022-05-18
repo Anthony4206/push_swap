@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Anthony <Anthony@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 07:31:44 by alevasse          #+#    #+#             */
-/*   Updated: 2022/05/16 19:04:13 by Anthony          ###   ########.fr       */
+/*   Updated: 2022/05/18 09:04:17 by alevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ char	**ft_take_input(void);
 void	ft_move_input(t_stack *stack, char *move);
 void	ft_is_error(t_list *lst);
 void	ft_error(t_stack *stack);
-t_list	*ft_parsing(int argc, char **argv);
+t_list	*ft_parsing(char **argv, t_list *ret, int *i);
+t_list	*ft_add_parsing(int argc, char **argv);
 
 void	ft_swap_a(t_list **a, int print);
 void	ft_push_a(t_list **a, t_list **b);

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: Anthony <Anthony@student.42.fr>            +#+  +:+       +#+         #
+#    By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/16 13:12:57 by alevasse          #+#    #+#              #
-#    Updated: 2022/05/17 11:02:46 by Anthony          ###   ########.fr        #
+#    Updated: 2022/05/18 13:43:42 by alevasse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ HEAD			= includes/push_swap.h includes/libft.h \
 					
 LIBS 			= ./libft/
 				
-CC 				= gcc
+CC 				= gcc -g
 CFLAGS 			= -Wall -Wextra -Werror
 
 AR 				= ar rcs
@@ -45,7 +45,7 @@ RESET			:= "\033[0m"
 
 all: 			${NAME}
 
-bonus:			${OBJS_B}
+bonus:			${OBJS_B} ${HEAD}
 				@make all -C ${LIBS}
 				@echo ${GREEN}"Successfully updated 'libft'" ${RESET}
 				@${CC} ${CFLAGS} ${INCLUDES} -o ${NAME_B} ${OBJS_B} ${LIBS}libft.a

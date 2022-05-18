@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Anthony <Anthony@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 07:31:23 by alevasse          #+#    #+#             */
-/*   Updated: 2022/05/16 18:32:30 by Anthony          ###   ########.fr       */
+/*   Updated: 2022/05/18 13:47:30 by alevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void	ft_make_input(t_stack *stack)
 
 	i = 0;
 	input = ft_take_input();
+	ft_printf("%s\n", input[i]);
 	while (input[i])
 	{
 		ft_move_input(stack, input[i]);

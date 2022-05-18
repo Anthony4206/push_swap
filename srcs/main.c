@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Anthony <Anthony@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 13:33:55 by alevasse          #+#    #+#             */
-/*   Updated: 2022/05/17 22:15:45 by Anthony          ###   ########.fr       */
+/*   Updated: 2022/05/18 12:16:46 by alevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,5 @@ int	main(int argc, char **argv)
 		ft_lstclear(&stack.a);
 	if (stack.b)
 		ft_lstclear(&stack.b);
-	system("leaks push_swap");
 	return (0);
 }

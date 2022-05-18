@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_push_swap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Anthony <Anthony@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 10:31:23 by alevasse          #+#    #+#             */
-/*   Updated: 2022/05/17 17:50:22 by Anthony          ###   ########.fr       */
+/*   Updated: 2022/05/18 08:27:06 by alevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ void	ft_small_a_to_b(t_stack *stack)
 void	ft_push_swap(t_stack *stack, t_info *info)
 {
 	if (ft_lstsize(stack->a) == 1)
+	{
 		return ;
+	}
 	if (ft_check_order(stack->a) == ft_lstsize(stack->a))
 		return ;
 	if (ft_lstsize(stack->a) == 2)

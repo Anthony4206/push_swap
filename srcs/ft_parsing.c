@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parsing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Anthony <Anthony@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 09:43:25 by alevasse          #+#    #+#             */
-/*   Updated: 2022/05/17 22:22:35 by Anthony          ###   ########.fr       */
+/*   Updated: 2022/05/18 08:56:06 by alevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,45 +75,45 @@ int	ft_check_order(t_list *a)
 	return (size);
 }
 
-
-
-t_list	*ft_parsing(int argc, char **argv, t_list *ret, int i)
+t_list	*ft_parsing(char **argv, t_list *ret, int *i)
 {
 	long int	nb;
 
-	if (!ft_strlen(argv[1]))
-		ft_is_error(ret);
-	if (argc == 2)
+	while (argv[*i])
 	{
-		argv = ft_split(argv[1], ' ');
-	}
-	while (argv[i])
-	{
-		if (!ft_strlen(argv[i]))
+		if (!ft_strlen(argv[*i]))
 			ft_is_error(ret);
-		ft_check_digit(argv[i], ret);
-		nb = ft_atol(argv[i]);
+		ft_check_digit(argv[*i], ret);
+		nb = ft_atol(argv[*i]);
 		if (nb > INT32_MAX || nb < INT32_MIN)
 			ft_is_error(ret);
 		ft_lstadd_back(&ret, ft_lstnew((int)nb));
-		i++;
-	}	
-	if (i > 1)
-		ft_check_double(ret);
+		(*i)++;
+	}
 	return (ret);
 }
 
 t_list	*ft_add_parsing(int argc, char **argv)
 {
 	t_list	*ret;
-	
+	int		i;
+
 	ret = NULL;
-	ft_printf("Coucou\n");
 	if (argc == 2)
-		ft_parsing(argc, ft_split(argv[1], ' '), ret, 0);
+	{
+		i = 0;
+		if (!ft_strlen(argv[1]))
+			ft_is_error(ret);
+		argv = ft_split(argv[1], ' ');
+		ret = ft_parsing(argv, ret, &i);
+		ft_free_tab(argv, i);
+	}
 	else
-		ft_parsing(argc, argv, ret, 1);
-	if (argc == 2)
-		ft_free_tab(argv, i);	
+	{
+		i = 1;
+		ret = ft_parsing(argv, ret, &i);
+	}
+	if (i > 1)
+		ft_check_double(ret);
 	return (ret);
 }

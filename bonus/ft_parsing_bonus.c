@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parsing_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Anthony <Anthony@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 09:43:25 by alevasse          #+#    #+#             */
-/*   Updated: 2022/05/16 18:29:00 by Anthony          ###   ########.fr       */
+/*   Updated: 2022/05/18 12:16:54 by alevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,27 +58,43 @@ static void	ft_check_double(t_list *ret)
 	ret = tmp;
 }
 
-t_list	*ft_parsing(int argc, char **argv)
+t_list	*ft_parsing(char **argv, t_list *ret, int *i)
 {
-	t_list		*ret;
-	int			i;
 	long int	nb;
 
-	ret = NULL;
-	i = 1;
-	if (argc == 2)
+	while (argv[*i])
 	{
-		argv = ft_split(argv[1], ' ');
-		i = 0;
-	}
-	while (argv[i])
-	{
-		ft_check_digit(argv[i], ret);
-		nb = ft_atol(argv[i]);
+		if (!ft_strlen(argv[*i]))
+			ft_is_error(ret);
+		ft_check_digit(argv[*i], ret);
+		nb = ft_atol(argv[*i]);
 		if (nb > INT32_MAX || nb < INT32_MIN)
 			ft_is_error(ret);
 		ft_lstadd_back(&ret, ft_lstnew((int)nb));
-		i++;
+		(*i)++;
+	}
+	return (ret);
+}
+
+t_list	*ft_add_parsing(int argc, char **argv)
+{
+	t_list	*ret;
+	int		i;
+
+	ret = NULL;
+	if (argc == 2)
+	{
+		i = 0;
+		if (!ft_strlen(argv[1]))
+			ft_is_error(ret);
+		argv = ft_split(argv[1], ' ');
+		ret = ft_parsing(argv, ret, &i);
+		ft_free_tab(argv, i);
+	}
+	else
+	{
+		i = 1;
+		ret = ft_parsing(argv, ret, &i);
 	}
 	if (i > 1)
 		ft_check_double(ret);

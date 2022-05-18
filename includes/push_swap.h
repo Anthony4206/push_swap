@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Anthony <Anthony@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alevasse <alevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 13:38:02 by alevasse          #+#    #+#             */
-/*   Updated: 2022/05/17 22:14:23 by Anthony          ###   ########.fr       */
+/*   Updated: 2022/05/18 07:14:22 by alevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	ft_push_swap(t_stack *stack, t_info *info);
 void	ft_small_a_to_b(t_stack *stack);
 void	ft_free_split(int argc, char **argv, int i);
 
-t_list	*ft_parsing(int argc, char **argv, t_list *ret, int i);
+t_list	*ft_parsing(char **argv, t_list *ret, int *i);
 t_list	*ft_add_parsing(int argc, char **argv);
 void	ft_swap_a(t_list **a, int print);
 void	ft_push_a(t_list **a, t_list **b);
